@@ -47,20 +47,28 @@ body {
 }
 
 .result {
-  display: flex;
+  display: grid;
+  place-items: center;
+  gap: 20px;
 }
 .result .guessed-color {
   font-size: 2rem;
   display: grid;
   place-items: center;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 .result .guessed-color-text {
   font-weight: bold;
+  grid-column: 2;
 }
 .result .guessed-color-sample {
   height: 50px;
   width: 100px;
   border: 1px solid grey;
   margin-left: 50px;
+}
+.result .guessed-color-message {
+  grid-column: 1/4;
+  grid-row: 2;
 }/*# sourceMappingURL=main.css.map */
