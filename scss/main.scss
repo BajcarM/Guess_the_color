@@ -12,13 +12,14 @@ body {
 .image-pixels {
   display: grid;
   place-items: center;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(23, 1fr);
   border: 1px solid black;
   padding: 20px;
 
   & .pixel {
-    height: 100px;
-    width: 100px;
+    height: 20px;
+    width: 20px;
+    border: 1px rgba(0, 0, 0, 0.148) solid;
   }
 }
 
@@ -53,7 +54,6 @@ body {
 
 .result {
   display: flex;
-  
 
   & .guessed-color {
     font-size: 2rem;

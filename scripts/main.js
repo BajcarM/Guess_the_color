@@ -1,3 +1,5 @@
+import pixels from "./pixels.js";
+
 const result = document.querySelector(".result");
 const imagePixels = document.querySelector(".image-pixels");
 const buttonRecolor = document.querySelector(".button-recolor");
@@ -5,32 +7,40 @@ const buttonGuess = document.querySelector(".button-guess");
 const guessedColorSample = document.querySelector(".guessed-color-sample");
 const guessedColorText = document.querySelector(".guessed-color-text");
 
-const pixelsArray = [];
-const animalPixels = [
-  "4",
-  "10",
-  "11",
-  "12",
-  "13",
-  "14",
-  "15",
-  "16",
-  "19",
-  "21",
-];
+const displayPixels = () => {
+  for (const pixel of pixels.darkGreenPixels) {
+    document.querySelector(`[data-id="${pixel}"]`).style.background = "green";
+  }
 
-for (let i = 0; i < 24; i++) {
-  pixelsArray.push(`<div class="pixel" data-id="${i}"></div>`);
+  for (const pixel of pixels.lightGreenPixels) {
+    document.querySelector(`[data-id="${pixel}"]`).style.background =
+      "lightgreen";
+  }
+
+  for (const pixel of pixels.blackPixels) {
+    document.querySelector(`[data-id="${pixel}"]`).style.background = "black";
+  }
+
+  for (const pixel of pixels.brownPixels) {
+    document.querySelector(`[data-id="${pixel}"]`).style.background =
+      "burlywood";
+  }
+
+  for (const pixel of pixels.greyPixels) {
+    document.querySelector(`[data-id="${pixel}"]`).style.background = "grey";
+  }
+};
+
+for (let i = 0; i < 23 * 17; i++) {
+  imagePixels.innerHTML += `<div class="pixel" data-id="${i}"></div>`;
 }
-
-imagePixels.innerHTML = pixelsArray.join("");
 
 const recolor = () => {
   const randomValue1 = Math.floor(Math.random() * 215) + 20;
   const randomValue2 = Math.floor(Math.random() * 215) + 20;
   const randomValue3 = Math.floor(Math.random() * 215) + 20;
 
-  const colors = animalPixels.map((pixel) => {
+  const colors = pixels.animalPixels.map((pixel) => {
     const digit1 = randomValue1 - 20 + Math.floor(Math.random() * 40);
     const digit2 = randomValue2 - 20 + Math.floor(Math.random() * 40);
     const digit3 = randomValue3 - 20 + Math.floor(Math.random() * 40);
@@ -45,7 +55,7 @@ const recolor = () => {
 };
 
 const guessColor = () => {
-  const colors = animalPixels.map((animal) => {
+  const colors = pixels.animalPixels.map((animal) => {
     const color = document
       .querySelector(`[data-id="${animal}"]`)
       .getAttribute("style")
@@ -82,6 +92,7 @@ const guessColor = () => {
   guessedColorSample.style.background = `rgb(${averageColor.digit1}, ${averageColor.digit2}, ${averageColor.digit3})`;
 };
 
+displayPixels();
 recolor();
 
 buttonRecolor.addEventListener("click", () => {
