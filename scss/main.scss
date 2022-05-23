@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  gap: 2rem;
+}
+
+.image-pixels {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(6, 1fr);
+  border: 1px solid black;
+  padding: 20px;
+
+  & .pixel {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+.buttons-div {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr;
+  padding: 20px;
+
+  & button {
+    border: 2px grey solid;
+    background-color: #fff;
+    padding: 10px;
+
+    &:hover {
+      background-color: rgb(213, 213, 213);
+    }
+
+    &:active {
+      background-color: rgb(178, 241, 255);
+    }
+  }
+
+  & .button-recolor {
+    grid-column: 1;
+  }
+
+  & .button-guess {
+    grid-column: 2;
+  }
+}
+
+.result {
+  display: flex;
+  
+
+  & .guessed-color {
+    font-size: 2rem;
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(2, 1fr);
+
+    &-text {
+      font-weight: bold;
+    }
+  }
+
+  & .guessed-color-sample {
+    height: 50px;
+    width: 100px;
+    border: 1px solid grey;
+    margin-left: 50px;
+  }
+}
